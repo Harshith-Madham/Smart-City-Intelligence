@@ -1,6 +1,6 @@
 # 🌆 Smart City Intelligence Dashboard
 
-An end-to-end data science + machine learning project that predicts:
+An end-to-end data science and machine learning project that predicts:
 
 * 🚗 Traffic Volume (hourly, Minneapolis)
 * 🌫️ Air Quality (PM2.5 next hour, Beijing dataset for demo)
@@ -25,20 +25,6 @@ R² scores:
 - Energy: varies, typically ~0.85–0.90
 
 ---
-
-## 🗂️ Project Structure
-smart_city/
-├─ app.py # Streamlit multi-tab dashboard
-├─ requirements.txt # Dependencies for deployment
-├─ README.md # This file
-├─ models/ # Saved RandomForest models (.pkl)
-├─ data/
-│ └─ raw/ # Original datasets (CSV)
-├─ notebooks/
-│ └─ 01_explore_data.ipynb # Data exploration & training
-└─ src/ (optional) # Any helper scripts
-
-
 
 Each model was trained in Jupyter notebooks using these steps:
 1. Data Cleaning & Feature Engineering
