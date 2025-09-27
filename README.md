@@ -1,2 +1,55 @@
-# Smart-City-Intelligence
-# Smart City Intelligence Dashboard  Interactive Streamlit app forecasting: - 🚗 **Traffic volume** (hourly) - 🌫️ **Air quality** (next-hour PM2.5) - ⚡ **Energy consumption** (next-day)  ## Run Locally ```bash conda env create -n smartcity python=3.11 pip install -r requirements.txt streamlit run app.py
+# 🌆 Smart City Intelligence Dashboard
+
+An end-to-end data science + machine learning project that predicts:
+
+* 🚗 Traffic Volume (hourly, Minneapolis)
+* 🌫️ Air Quality (PM2.5 next hour, Beijing dataset for demo)
+* ⚡ Energy Consumption (next-day electricity load, Germany dataset)
+
+Built with Python, scikit-learn, and Streamlit, this project demonstrates
+data engineering, feature engineering, machine learning, and deployment on the web.
+
+---
+
+## ✨ Key Features
+
+| Module | What It Does | Techniques |
+|--------|-------------|-----------|
+| Traffic | Predicts hourly vehicle count from weather & time features | RandomForestRegressor, feature engineering (hour, weekday, month) |
+| Air Quality | Forecasts PM2.5 one hour ahead | Lag features, RandomForestRegressor |
+| Energy | Forecasts next-day energy consumption | Time-series lags & rolling means, RandomForestRegressor |
+
+R² scores:  
+- Traffic: ≈ 0.92 
+- Air Quality: varies, typically ~0.75–0.85
+- Energy: varies, typically ~0.85–0.90
+
+---
+
+## 🗂️ Project Structure
+smart_city/
+├─ app.py # Streamlit multi-tab dashboard
+├─ requirements.txt # Dependencies for deployment
+├─ README.md # This file
+├─ models/ # Saved RandomForest models (.pkl)
+├─ data/
+│ └─ raw/ # Original datasets (CSV)
+├─ notebooks/
+│ └─ 01_explore_data.ipynb # Data exploration & training
+└─ src/ (optional) # Any helper scripts
+
+
+
+Each model was trained in Jupyter notebooks using these steps:
+1. Data Cleaning & Feature Engineering
+-Time-based features (hour, weekday, month).
+-Lag features for air and energy.
+-Rolling means for energy consumption.
+2. Modeling
+-RandomForestRegressor for all three tasks.
+-Chronological train/test splits (80/20).
+3. Evaluation
+-Mean Absolute Error (MAE)
+-R² score.
+
+Saved models are stored in models/*.pkl and loaded by the app.
